@@ -1,0 +1,186 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Browse{% endblock %}
+
+{% block content %}
+
+{% include 'base/navbar.html' %}
+
+{% include 'base/sidebar.html' %}
+
+<!---Main Content Start--->
+<div class="ms_main_wrapper">
+
+    <div class="ms_content_wrapper padder_top80">
+
+        <!---Featured Artists Music--->
+        <div class="ms_featured_slider padder_top20">
+        <div class="ms_heading">
+            <h1>Artists</h1>
+        </div>
+        <div class="ms_relative_inner">
+            <div class="ms_feature_slider swiper-container">
+                <div class="swiper-wrapper">
+                    {% if not all_artists %}
+                    <h6 style="font-size: 20rem;">There are no Featured Artists!</h6>
+                    {% else %}
+                    {% for row_artists in all_artists %}
+                        <div class="swiper-slide"><a href="{% url 'artists-details' sid=song.id artist_id=artist.id %}">
+                        <div class="ms_rcnt_box">
+                            <div class="ms_rcnt_box_img">
+                                <img src="{{ row_artists.image.url }}" alt="">
+                                <div class="ms_main_overlay">
+                                    <div class="ms_box_overlay"></div>
+                                    <div class="ms_more_icon">
+                                        <img src="{% static 'images/svg/more.svg' %}" alt="">
+                                    </div>
+                                    <ul class="more_option">
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_dwn"></span></span>Download Now</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_share"></span></span>Share</a></li>
+                                    </ul>
+                                    <div class="ms_play_icon">
+                                        <img src="{% static 'images/svg/play.svg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms_rcnt_box_text">
+                                <h3>{{ row_artists.artistName }}</h3>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next1 slider_nav_next"></div>
+            <div class="swiper-button-prev1 slider_nav_prev"></div>
+        </div>
+    </div>
+
+        <!----Featured Album Section Start---->
+        <div class="ms_fea_album_slider padder_top10 ">
+            <div class="ms_heading">
+                <h1>Albums</h1>
+                <span class="veiw_all"><a href="#">view more</a></span>
+            </div>
+            <div class="ms_album_slider swiper-container">
+                <div class="swiper-wrapper">
+                    {% if not all_albums %}
+                    <h6 style="font-size: 20rem;">There are no Featured Albums!</h6>
+                    {% else %}
+                    {% for row_album in all_albums %}
+                    <div class="swiper-slide"><a href="{% url 'albums_details' sid=song.id album_id=album.id %}">
+                        <div class="ms_rcnt_box">
+                            <div class="ms_rcnt_box_img">
+                                <img src="{{ row_album.artWork.url }}" alt="">
+                                <div class="ms_main_overlay">
+                                    <div class="ms_box_overlay"></div>
+                                    <div class="ms_more_icon">
+                                        <img src="{% static 'images/svg/more.svg' %}" alt="">
+                                    </div>
+                                    <ul class="more_option">
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_dwn"></span></span>Download Now</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span
+                                                class="icon icon_share"></span></span>Share</a></li>
+                                    </ul>
+                                    <div class="ms_play_icon">
+                                        <img src="{% static 'images/svg/play.svg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms_rcnt_box_text">
+                                <h3>{{ row_album.albumName }}</h3>
+                                <p>{{ row_album.artist_name }}</p>
+                            </div>
+                        </div></a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next3 slider_nav_next"></div>
+            <div class="swiper-button-prev3 slider_nav_prev"></div>
+        </div>
+
+        <!----Top Songs Section---->
+        <div class="ms_top_artist">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ms_heading">
+                        <h1>Songs</h1>
+                    </div>
+                </div>
+                {% if not data %}
+                    <h6 style="font-size: 20rem;">There are no Featured Songs!</h6>
+                    {% else %}
+                {% for row_song in data %}
+                <div class="col-lg-2 col-md-6">
+                    <div class="ms_rcnt_box marger_bottom30">
+                        <div class="ms_rcnt_box_img">
+                            <img src="{{ row_song.art_Work.url }}" alt="" class="img-fluid">
+                            <div class="ms_main_overlay">
+                                <div class="ms_box_overlay"></div>
+                                <div class="ms_more_icon">
+                                    <img src="{% static 'images/svg/more.svg' %}" alt="">
+                                </div>
+                                <ul class="more_option">
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add
+                                        To Favourites</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add
+                                        To Queue</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download
+                                        Now</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span
+                                            class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
+                                    </li>
+                                </ul>
+                                <div class="ms_play_icon">
+                                    <img src="{% static 'images/svg/play.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms_rcnt_box_text">
+                            <h3>{{ row_song.song_name }}</h3>
+                            <p>{{ row_song.artist_name }}</p>
+                        </div>
+                    </div></a>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</div>
+
+{% include 'base/copyright.html' %}
+
+{% include 'base/audioplayer.html' %}
+
+{% endblock %}

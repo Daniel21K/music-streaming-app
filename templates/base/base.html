@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"><!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>iAfrica Radio Online | {% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Music">
+    <meta name="keywords" content="">
+    <meta name="MobileOptimized" content="320">
+
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugins/swiper/css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugins/nice_select/nice-select.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugins/player/volume.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugins/scroll/jquery.mCustomScrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- Favicon Link -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+
+<body>
+
+  <!----Main Wrapper Start---->
+    <div class="ms_main_wrapper">
+
+        {% block content %}
+        {% endblock %}
+
+
+
+
+
+<!--Main js file Style-->
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/swiper/js/swiper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/player/jplayer.playlist.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/player/jquery.jplayer.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/player/audioplayer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/player/volume.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/nice_select/jquery.nice-select.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins/scroll/jquery.mCustomScrollbar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

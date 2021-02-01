@@ -1,0 +1,15 @@
+{% load static %}
+
+<!---Nav Bar--->
+<div class="ms_header">
+    <div class="ms_top_left">
+        <form class="ms_top_search" action="{% url 'search' sid=song.id %}" id="playerSearch">
+            <input type="text" class="form-control" id="playerSearch-input" placeholder="Search Music Here.." name="search">
+            <button class="search_icon" type="submit" id="playerSearch-submit">
+                <img src="{% static 'images/svg/search.svg'%}" alt="">
+            </button>
+        </form>
+
+    </div>
+
+</div>

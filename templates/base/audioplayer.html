@@ -1,0 +1,105 @@
+{% load static %}
+
+<!----Audio Player Section---->
+<div class="ms_player_wrapper">
+
+    <div class="ms_player_close">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </div>
+
+    <div class="player_mid">
+
+        <div class="audio-player">
+
+            <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+            <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+
+                <!-- Song Title & Artist Name -->
+
+                <div class="player_left">
+                    <div class="ms_play_song">
+                        <div class="play_song_name">
+                            <a href="" id="playlist-text">
+                                <div class="jp-now-playing flex-item">
+                                    <div class="jp-track-name">{{ song.song_name }}</div>
+                                    <div class="jp-artist-name">{{ song.artist_name }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!----Player Controls---->
+
+                <div class="jp-type-playlist">
+                    <div class="jp-gui jp-interface flex-wrap">
+
+                        <div class="jp-controls flex-item">
+
+                            <!--Previous-->
+                            <button id="prev" {% if pid != '-1' %} onclick="location.href='{% url 'songs' pid %}'" {% endif %}  class="jp-previous {% if pid == '-1' %} disabled {% endif %}">
+                                <i class="ms_play_control"></i>
+                            </button>
+
+                            <!--Play/Pause-->
+                            <button id="play" class="jp-play jp-pause">
+                                <i class="ms_play_control"></i>
+                            </button>
+
+                            <!--Next-->
+                            <button id="next" {% if nid != '-1' %} onclick="location.href='{% url 'songs' nid %}'" {% endif %} class="jp-next {% if nid == '-1' %} disabled {% endif %}">
+                                <i class="ms_play_control"></i>
+                            </button>
+
+                        </div>
+
+                        <!--Progress Bar-->
+                        <div class="jp-progress-container flex-item">
+                            <div class="jp-time-holder">
+                                <span id="startTime" class="jp-current-time" role="timer" aria-label="time">&nbsp;</span>
+                                <span id="endTime" class="jp-duration" role="timer" aria-label="duration">&nbsp;</span>
+                            </div>
+                            <div class="jp-progress">
+                                <div id="duration-range-main" class="jp-seek-bar">
+                                    <div id="duration-range-bar" class="jp-play-bar">
+                                        <div id="duration-range-thumb" class="bullet"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--The Audio File-->
+                        <audio id="musicPlayer" src="{{ song.song_file.url }}"></audio>
+
+                        <!-- Volume -->
+                        <div class="jp-volume-controls flex-item">
+                            <div class="widget knob-container">
+                                <div class="knob-wrapper-outer">
+                                    <div class="knob-wrapper">
+                                        <div class="knob-mask">
+                                            <div class="knob d3"><span></span></div>
+                                            <div class="handle"></div>
+                                            <div class="round">
+                                                <img src="{% static 'images/svg/volume.svg' %}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <input></input> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shuffle n Repeat Buttons -->
+                        <div class="jp-toggles flex-item">
+                            <button class="jp-shuffle" tabindex="0" title="Shuffle"><i class="ms_play_control"></i></button>
+                            <button class="jp-repeat" id="repeat" title="Repeat"><i class="ms_play_control"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--main div-->
+</div>
